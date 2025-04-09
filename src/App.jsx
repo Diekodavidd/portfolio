@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './theme';
 import GlobalStyle from './globalStyles';
@@ -13,7 +13,6 @@ import styled from 'styled-components';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
 import { Element } from 'react-scroll';
-
 const MainContent = styled.div`
   margin-left: 80px; /* Sidebar width */
   padding: 0;
@@ -36,7 +35,25 @@ const Header = styled.header`
 `;
 
 function App() {
+
+  useEffect(() => {
+    // Initialize particles.js once the component mounts
+    window.particlesJS('particles-js', {
+      particles: {
+        number: { value: 100 },
+        size: { value: 3 },
+        move: { speed: 1 }
+      },
+      interactivity: {
+        events: { onhover: { enable: true, mode: 'repulse' } }
+      }
+    });
+  }, []);
+
+
   const [isDarkMode, setIsDarkMode] = useState(true);
+
+ 
 
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
@@ -48,6 +65,10 @@ function App() {
             <h1 style={{ color: 'gold' }}>Alex.dev</h1>
             <ThemeToggle toggle={() => setIsDarkMode(!isDarkMode)} isDarkMode={isDarkMode} />
           </Header>
+
+           {/* Add the particles div */}
+        <div id="particles-js" style={{ position: 'absolute', width: '100%', height: '100%', zIndex: '-1' }}></div>
+
 
           <Element name="home"><Hero /></Element>
           <Element name="about"><About /></Element>

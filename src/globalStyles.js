@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
     background: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.text};
     transition: background 0.3s, color 0.3s;
+    overflow-x: hidden;
   }
 `;
 

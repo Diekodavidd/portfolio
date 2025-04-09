@@ -8,7 +8,8 @@ import codingAnimation from '../assets/Animation - 1744226088555.json';
 
 const AboutSection = styled.section`
   min-height: 100vh;
-  background: #111111;
+  // background: #111111;
+  background: ${({ theme }) => theme.background};
   color: ${({ theme }) => theme.accent};
   padding: 7rem 2rem;
   display: flex;
@@ -138,7 +139,7 @@ const About = () => {
       </StackIcons>
 
       <ResumeButton
-        href="/resume.pdf"
+        href="public/Alex cv.pdf"
         download
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
