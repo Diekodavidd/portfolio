@@ -4,13 +4,13 @@ import { motion } from 'framer-motion';
 import { FaReact, FaNode, FaHtml5, FaCss3Alt, FaJs, FaGithub } from 'react-icons/fa';
 import Lottie from 'lottie-react';
 import { FaChevronDown } from 'react-icons/fa';
-import codingAnimation from '../assets/Animation - 1744226088555.json'; // replace with your actual Lottie JSON file
+import codingAnimation from '../assets/Animation - 1744226088555.json';
 
 const AboutSection = styled.section`
   min-height: 100vh;
   background: #111111;
-color: ${({ theme }) => theme.accent};
-  padding: 4rem 2rem;
+  color: ${({ theme }) => theme.accent};
+  padding: 7rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,7 +20,7 @@ color: ${({ theme }) => theme.accent};
 const Heading = styled(motion.h2)`
   font-size: 2.5rem;
   margin-bottom: 2rem;
-color: ${({ theme }) => theme.accent};
+  color: ${({ theme }) => theme.accent};
 `;
 
 const ContentWrapper = styled.div`
@@ -64,6 +64,25 @@ const StackIcons = styled(motion.div)`
     }
   }
 `;
+
+const ResumeButton = styled(motion.a)`
+  margin-top: 2.5rem;
+  padding: 0.8rem 1.8rem;
+  background-color: ${({ theme }) => theme.accent};
+  color: ${({ theme }) => theme.background};
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 10px ${({ theme }) => theme.accent}44;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.text};
+    color: ${({ theme }) => theme.accent};
+    transform: scale(1.05);
+  }
+`;
+
 const ScrollIndicator = styled(motion.div)`
   position: absolute;
   bottom: 30px;
@@ -117,14 +136,24 @@ const About = () => {
         <FaJs />
         <FaGithub />
       </StackIcons>
-       <ScrollIndicator
-               initial={{ opacity: 0 }}
-               animate={{ opacity: 1 }}
-               transition={{ delay: 2 }}
-             >
-               <FaChevronDown />
-             </ScrollIndicator>
-          
+
+      <ResumeButton
+        href="/resume.pdf"
+        download
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        📄 Download Resume
+      </ResumeButton>
+
+      {/* Optional scroll chevron below */}
+      <ScrollIndicator
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2 }}
+      >
+        {/* <FaChevronDown /> */}
+      </ScrollIndicator>
     </AboutSection>
   );
 };
