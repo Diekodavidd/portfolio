@@ -134,11 +134,20 @@ const About = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
-        >
-          Hi there! I'm <strong>Akintunde Diekololaoluwa</strong>, but in the world of code, they call me <strong>dev Alex</strong>.
-          I’m a React & Node.js enthusiast who thrives on building seamless user experiences and powerful web applications. Whether I’m crafting an intuitive UI or diving into back-end magic, my goal is to make the web a more interactive, beautiful place. When I’m not coding, you can catch me exploring new tech trends, playing chess, or diving into my favorite sci-fi movies.
-        </TextContent>
+        >Hi, I’m <strong>Akintunde Diekololaoluwa</strong>, but in the world of code, they call me <strong>dev Alex</strong>.
+        I’m a passionate full-stack developer specializing in React for building dynamic front-end applications and Node.js for crafting robust back-end systems. Whether I’m designing seamless user interfaces or working on server-side logic, I strive to deliver web applications that are both functional and visually captivating.
+        When I’m not coding, you’ll likely find me exploring the latest tech trends, solving chess puzzles, or diving deep into the sci-fi universes that inspire me.
+       </TextContent>
       </ContentWrapper>
+
+      <ResumeButton
+        href="public/Alex cv.pdf"
+        download
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        📄 Download My Resume
+      </ResumeButton>
 
       <StackIcons
         initial={{ opacity: 0 }}
@@ -153,21 +162,12 @@ const About = () => {
         <FaGithub />
       </StackIcons>
 
-      <ResumeButton
-        href="public/Alex cv.pdf"
-        download
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        📄 Download My Resume
-      </ResumeButton>
-
       <ScrollIndicator
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
       >
-        <FaChevronDown />
+        {/* <FaChevronDown /> */}
       </ScrollIndicator>
     </AboutSection>
   );
