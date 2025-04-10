@@ -3,6 +3,8 @@ import { TypeAnimation } from 'react-type-animation';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FaChevronDown } from 'react-icons/fa';
+import Lottie from 'lottie-react';
+import animationData from '../assets/Animation - 1744237849963.json'; // Replace with your Lottie animation file
 
 // Styled Components for Hero
 const HeroSection = styled.section`
@@ -18,12 +20,20 @@ const HeroSection = styled.section`
   position: relative;
 `;
 
-const Title = styled.h1`
+const Title = styled(motion.h1)`
   font-size: 3rem;
   font-weight: bold;
   color: ${({ theme }) => theme.accent};
   margin-bottom: 1rem;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+
+  &:hover {
+    color: #d4af37;  // Gold accent color on hover
+    transform: translateY(-8px); // Slight bounce effect
+  }
+
+  transition: transform 0.3s ease, color 0.3s ease;
 `;
 
 const CodeAnimation = styled(motion.code)`
@@ -59,10 +69,46 @@ const ScrollIndicator = styled(motion.div)`
   }
 `;
 
+const HeroMascot = () => {
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData, // Add your Lottie animation data here
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
+
+  return (
+    <motion.div
+    whileHover={{ scale: 1.2, rotate: 10 }}
+    transition={{ type: 'spring', stiffness: 300 }}
+  >
+    <Lottie 
+      animationData={animationData} // Directly use animationData prop
+      loop={true} // Loop the animation
+      autoplay={true} // Autoplay the animation
+      style={{ height: 250, width: 250 }} // Set size directly via style
+    />
+  </motion.div>
+  );
+};
+
 const Hero = () => {
   return (
-    <HeroSection>
-      <Title>Hi, I’m Akintunde Diekololaoluwa</Title>
+    <HeroSection
+    initial={{ opacity: 0, x: -200 }} // Start off-screen to the left
+    whileInView={{ opacity: 1, x: 0 }} // Slide to the original position
+    transition={{ duration: 0.8 }}
+    viewport={{ once: true }}
+    >
+      <Title
+        initial={{ y: 0 }}
+        whileHover={{ y: -10, scale: 1.1 }}
+        transition={{ type: 'spring', stiffness: 300 }}
+      >
+        Hi, I’m Akintunde Diekololaoluwa
+      </Title>
       <TypeAnimation
         sequence={[
           'fullStackDeveloper();',
@@ -92,6 +138,7 @@ const Hero = () => {
       >
         <FaChevronDown />
       </ScrollIndicator>
+      <HeroMascot />
     </HeroSection>
   );
 };

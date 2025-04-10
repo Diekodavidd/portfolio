@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import emailjs from 'emailjs-com';
 
 const ContactWrapper = styled.section`
-//   background: linear-gradient(145deg, #0B0C2A, #111111);
   color: #F5F5F5;
   padding: 6rem 2rem;
   position: relative;
@@ -30,7 +30,7 @@ const Title = styled.h2`
 
 const Subtext = styled.p`
   font-size: 1.25rem;
-color: ${({ theme }) => theme.accent};
+  color: ${({ theme }) => theme.accent};
   margin-bottom: 2rem;
 `;
 
@@ -44,7 +44,7 @@ const Input = styled.input`
   background: rgba(255, 255, 255, 0.07);
   border: none;
   border-radius: 10px;
- color: ${({ theme }) => theme.accent};
+  color: ${({ theme }) => theme.accent};
   font-size: 1rem;
 
   &::placeholder {
@@ -113,6 +113,45 @@ const IconLink = styled.a`
 `;
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const [statusMessage, setStatusMessage] = useState('');
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Change status message to "Sending..."
+    setStatusMessage('Sending...');
+
+    // Replace with your EmailJS service and template IDs
+    emailjs.sendForm(
+      'diekodavid',  // Replace with your service ID
+      'template_b7lg6no', // Replace with your template ID
+      e.target,           // The form element
+      'j9vqokwSPVGjzrejr'      // Replace with your user ID
+    )
+      .then((result) => {
+        setStatusMessage('Message sent successfully!');
+        setFormData({ name: '', email: '', message: '' });
+      })
+      .catch((error) => {
+        setStatusMessage('Error: Could not send message.');
+        console.error(error);
+      });
+  };
+
   return (
     <ContactWrapper id="contact">
       <GlassBox
@@ -120,17 +159,44 @@ const Contact = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
-
-        
         <Title>Let’s Make Magic Together</Title>
         <Subtext>I’m always open to talking about bold ideas, new projects or how we can build something magical.</Subtext>
 
-        <Form onSubmit={(e) => e.preventDefault()}>
-          <Input type="text" placeholder="Your Name" required />
-          <Input type="email" placeholder="Your Email" required />
-          <Textarea placeholder="Your Message" required />
+        <Form onSubmit={handleSubmit}>
+          <Input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Your Name"
+            required
+          />
+          <Input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Your Email"
+            required
+          />
+          <Textarea
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            placeholder="Your Message"
+            required
+          />
           <Button type="submit">Send Message</Button>
         </Form>
+
+        <motion.p
+          className="text-xl text-[#F5F5F5] mb-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.7 }}
+        >
+          {statusMessage}
+        </motion.p>
 
         <Socials>
           <IconLink href="https://github.com/Diekodavidd" target="_blank" rel="noreferrer"><FaGithub /></IconLink>

@@ -5,10 +5,10 @@ import { FaReact, FaNodeJs, FaHtml5, FaCss3, FaJs, FaGithub, FaNpm } from 'react
 import { SiTailwindcss, SiFirebase, SiMongodb, SiExpress, SiVite } from 'react-icons/si';
 
 const Section = styled.section`
-//   background: #0B0C2A;
   padding: 5rem 2rem;
-    color: ${({ theme }) => theme.accent};
+  color: ${({ theme }) => theme.accent};
   text-align: center;
+  // background: ${({ theme }) => theme.background};
 `;
 
 const Title = styled(motion.h2)`
@@ -21,10 +21,11 @@ const GridWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  align-items: center;
 
   @media (min-width: 768px) {
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
   }
 `;
 
@@ -34,6 +35,7 @@ const Category = styled(motion.div)`
   border-radius: 12px;
   box-shadow: 0 0 12px rgba(212, 175, 55, 0.15);
   transition: all 0.3s ease;
+  position: relative;
 
   &:hover {
     box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
@@ -43,27 +45,52 @@ const Category = styled(motion.div)`
 
 const CatTitle = styled.h3`
   font-size: 1.3rem;
- color: ${({ theme }) => theme.accent};
+  color: ${({ theme }) => theme.accent};
   margin-bottom: 1.2rem;
   border-bottom: 1px solid #D4AF37;
   padding-bottom: 0.5rem;
 `;
 
-const IconGrid = styled.div`
+const IconCircleWrapper = styled.div`
+  position: relative;
+  height: 200px;
+  width: 250px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 1.2rem;
   justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: rotate(15deg);
+  }
+`;
+
+const IconGrid = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  // height: 100%;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  transform: scale(0.9);
+  transition: all 0.3s ease;
 
   svg {
     font-size: 2.5rem;
     color: #f5f5f5;
-    transition: 0.3s ease;
-    
+    transition: transform 0.3s ease, color 0.3s ease;
+
     &:hover {
       color: #D4AF37;
-      transform: scale(1.2);
+      transform: scale(1.2) rotate(10deg);
     }
+  }
+
+  ${IconCircleWrapper}:hover & {
+    transform: scale(1.1);
   }
 `;
 
@@ -85,14 +112,16 @@ const TechStack = () => {
           transition={{ duration: 0.8 }}
         >
           <CatTitle>Frontend</CatTitle>
-          <IconGrid>
-            <FaHtml5 />
-            <FaCss3 />
-            <FaJs />
-            <FaReact />
-            <SiTailwindcss />
-            <SiVite />
-          </IconGrid>
+          <IconCircleWrapper>
+            <IconGrid>
+              <FaHtml5 />
+              <FaCss3 />
+              <FaJs />
+              <FaReact />
+              <SiTailwindcss />
+              <SiVite />
+            </IconGrid>
+          </IconCircleWrapper>
         </Category>
 
         <Category
@@ -101,12 +130,14 @@ const TechStack = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <CatTitle>Backend</CatTitle>
-          <IconGrid>
-            <FaNodeJs />
-            <SiExpress />
-            <SiFirebase />
-            <SiMongodb />
-          </IconGrid>
+          <IconCircleWrapper>
+            <IconGrid>
+              <FaNodeJs />
+              <SiExpress />
+              <SiFirebase />
+              <SiMongodb />
+            </IconGrid>
+          </IconCircleWrapper>
         </Category>
 
         <Category
@@ -115,11 +146,12 @@ const TechStack = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <CatTitle>Tools</CatTitle>
-          <IconGrid>
-            <FaGithub />
-            <FaNpm />
-            {/* Add more if needed */}
-          </IconGrid>
+          <IconCircleWrapper>
+            <IconGrid>
+              <FaGithub />
+              <FaNpm />
+            </IconGrid>
+          </IconCircleWrapper>
         </Category>
       </GridWrapper>
     </Section>

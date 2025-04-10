@@ -3,12 +3,11 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FaReact, FaNode, FaHtml5, FaCss3Alt, FaJs, FaGithub } from 'react-icons/fa';
 import Lottie from 'lottie-react';
-import { FaChevronDown } from 'react-icons/fa';
 import codingAnimation from '../assets/Animation - 1744226088555.json';
+import { FaChevronDown } from 'react-icons/fa';
 
 const AboutSection = styled.section`
   min-height: 100vh;
-  // background: #111111;
   background: ${({ theme }) => theme.background};
   color: ${({ theme }) => theme.accent};
   padding: 7rem 2rem;
@@ -22,6 +21,7 @@ const Heading = styled(motion.h2)`
   font-size: 2.5rem;
   margin-bottom: 2rem;
   color: ${({ theme }) => theme.accent};
+  font-weight: 600;
 `;
 
 const ContentWrapper = styled.div`
@@ -29,16 +29,24 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   gap: 3rem;
   align-items: center;
-  
+
   @media (min-width: 768px) {
     flex-direction: row;
     justify-content: space-around;
   }
 `;
 
-const AnimationWrapper = styled.div`
+const AnimationWrapper = styled(motion.div)`
   width: 300px;
   height: 300px;
+  opacity: 0;
+  transform: translateY(20px);
+
+  &.in-view {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 1s ease;
+  }
 `;
 
 const TextContent = styled(motion.div)`
@@ -80,7 +88,7 @@ const ResumeButton = styled(motion.a)`
   &:hover {
     background-color: ${({ theme }) => theme.text};
     color: ${({ theme }) => theme.accent};
-    transform: scale(1.05);
+    transform: scale(1.1);
   }
 `;
 
@@ -99,17 +107,26 @@ const ScrollIndicator = styled(motion.div)`
 
 const About = () => {
   return (
-    <AboutSection id="about">
+    <AboutSection id="about"
+    initial={{ opacity: 0, x: -100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        >
       <Heading
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        Who is dev Alex?
+        Meet Dev Alex – Your Code Whisperer!
       </Heading>
 
       <ContentWrapper>
-        <AnimationWrapper>
+        <AnimationWrapper
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
           <Lottie animationData={codingAnimation} loop autoplay />
         </AnimationWrapper>
 
@@ -118,10 +135,8 @@ const About = () => {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
-          I'm Akintunde Diekololaoluwa, known in the dev world as <strong>dev Alex</strong>.
-          I breathe life into web apps using React, Node, and modern web magic.
-          Whether it's bold UI/UX or building full-stack platforms, I focus on
-          interactivity, personality, and purpose. I don’t just build websites — I create experiences.
+          Hi there! I'm <strong>Akintunde Diekololaoluwa</strong>, but in the world of code, they call me <strong>dev Alex</strong>.
+          I’m a React & Node.js enthusiast who thrives on building seamless user experiences and powerful web applications. Whether I’m crafting an intuitive UI or diving into back-end magic, my goal is to make the web a more interactive, beautiful place. When I’m not coding, you can catch me exploring new tech trends, playing chess, or diving into my favorite sci-fi movies.
         </TextContent>
       </ContentWrapper>
 
@@ -144,16 +159,15 @@ const About = () => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        📄 Download Resume
+        📄 Download My Resume
       </ResumeButton>
 
-      {/* Optional scroll chevron below */}
       <ScrollIndicator
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
       >
-        {/* <FaChevronDown /> */}
+        <FaChevronDown />
       </ScrollIndicator>
     </AboutSection>
   );

@@ -13,6 +13,10 @@ import styled from 'styled-components';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
 import { Element } from 'react-scroll';
+import CursorTrailEffect from './components/CursorTrailEffect';
+
+
+
 const MainContent = styled.div`
   margin-left: 80px; /* Sidebar width */
   padding: 0;
