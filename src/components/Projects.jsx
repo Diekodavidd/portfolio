@@ -11,7 +11,7 @@ const projects = [
     live: "https://alexandercinema.netlify.app",
     github: "https://github.com/Diekodavidd/MovieLibrary.git",
     desc: "Search your favorite movies by name or genre, including Marvel heroes. Uses MovieDB API to fetch and display movie data.",
-    image:"https://api.url2png.com/v6/P4DF2F8BC83648/31e53a2f655cc8f874aba75657a59c84/png/?thumbnail_max_width=851&url=https://alexandercinema.netlify.app&viewport=1280x2000"
+    image: "https://api.url2png.com/v6/P4DF2F8BC83648/31e53a2f655cc8f874aba75657a59c84/png/?thumbnail_max_width=851&url=https://alexandercinema.netlify.app&viewport=1280x2000"
   },
   {
     title: "Weather Site",
@@ -28,7 +28,7 @@ const projects = [
     tech: "HTML, CSS, JS, Firebase",
     live: "https://bankudooo.web.app",
     github: "https://github.com/Diekodavidd/Bankudo.git",
-    desc: "League management site for players and masters to track games, view tables, and log complaints. Firebase handles backend and auth.",
+    desc: "League management site for players and masters to track games, view tables, & log complaints. Firebase handles backend.",
     image: "https://api.url2png.com/v6/P4DF2F8BC83648/6adb5a575179c00f3dceab295141938f/png/?thumbnail_max_width=851&url=https://bankudooo.web.app&viewport=1280x2000",
   },
   {
@@ -41,7 +41,7 @@ const projects = [
     image: "https://api.url2png.com/v6/P4DF2F8BC83648/b20bdfd4f1e83ed162e2ceb3b128fc2b/png/?thumbnail_max_width=851&url=https://cight.netlify.app&viewport=1280x2000",
   },
   {
-    title: "E-commerce Fashion",
+    title: "Alexader David Brand",
     type: "React",
     tech: "React, Firebase",
     live: "https://fir-class-a1dcc.web.app",
@@ -122,7 +122,7 @@ const Card = styled(motion.div)`
   }
 
   /* Front side */
-  .card-front {
+  .card-back {
     display: block;
     /* Your previous content for the front card (text, description) */
     text-align: left;
@@ -130,10 +130,11 @@ const Card = styled(motion.div)`
   }
 
   /* Back side (flipped view) */
-  .card-back {
+  .card-front {
+  
+    display: block;
     transform: rotateY(180deg);
   background: #1f1f1f;
-  display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -148,12 +149,22 @@ const Card = styled(motion.div)`
   object-position: top; /* Start the image from the top */
   border-radius: 8px;
 }
+  
 `;
 
 const ProjectTitle = styled.h3`
   color: #fff;
   font-size: 1.4rem;
   margin-bottom: 0.5rem;
+`;
+const ProjectTitled = styled.h3`
+  color: #fff;
+  font-size: 1.4rem;
+  margin-bottom: 0rem;
+  margin-top: 0.7rem;
+  text-align: center;
+  font-weight: bold;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 `;
 
 const Type = styled.span`
@@ -201,8 +212,8 @@ const Buttons = styled.div`
 const Projects = () => {
   return (
     <Section id="projects">
-       {/* This div will hold the cursor trail */}
-       <CursorTrailEffect />
+      {/* This div will hold the cursor trail */}
+      <CursorTrailEffect />
       <Title
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -220,21 +231,22 @@ const Projects = () => {
             transition={{ duration: 0.7, delay: i * 0.2 }}
           >
             <div className="card-content">
-            <div className="card-front">
-              <ProjectTitle>{proj.title}</ProjectTitle>
-              <Type>{proj.type}</Type>
-              <Description>{proj.desc}</Description>
-              <TechUsed>{proj.tech}</TechUsed>
-              <Buttons>
-                <a href={proj.live} target="_blank" rel="noreferrer">Live Demo</a>
-                <a href={proj.github} target="_blank" rel="noreferrer">GitHub</a>
-              </Buttons>
-              </div>
               <div className="card-back">
-<div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
-   {/* Dynamically load the image based on the project data */}
- <img src={proj.image} alt={`${proj.title} Demo`} /> </div>      
-        </div>
+              <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
+                  {/* Dynamically load the image based on the project data */}
+                  <img src={proj.image} alt={`${proj.title} Demo`} /> </div>
+                  <ProjectTitled>{proj.title}</ProjectTitled>
+              </div>
+              <div className="card-front">
+              <ProjectTitle>{proj.title}</ProjectTitle>
+                <Type>{proj.type}</Type>
+                <Description>{proj.desc}</Description>
+                <TechUsed>{proj.tech}</TechUsed>
+                <Buttons>
+                  <a href={proj.live} target="_blank" rel="noreferrer">Live Demo</a>
+                  <a href={proj.github} target="_blank" rel="noreferrer">GitHub</a>
+                </Buttons>
+              </div>
             </div>
           </Card>
         ))}
