@@ -14,7 +14,7 @@
 export const lightTheme = {
   background: '#F5F5F5', // Soft White
   text: '#0B0C2A',       // Deep Navy Blue
-  accent: '#D4AF37',     // Gold Accent
+  accent: '#1F3B73',     // Gold Accent
 };
 
 export const darkTheme = {
