@@ -17,6 +17,10 @@ const SidebarContainer = styled.nav`
   padding-top: 1rem;
   box-shadow: 2px 0 5px rgba(0,0,0,0.1);
   z-index: 100;
+
+  @media (max-width: 500px) {
+  display: none; /* Hide sidebar on small screens */
+  }
 `;
 
 const NavIcon = styled(Link)`

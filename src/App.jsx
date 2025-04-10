@@ -22,6 +22,10 @@ const MainContent = styled.div`
   padding: 0;
   transition: margin-left 0.3s;
   overflow-x: hidden;
+
+  @media (max-width: 500px) {
+    margin-left: 0; /* Remove margin on small screens */
+  }
 `;
 
 const Header = styled.header`
@@ -36,6 +40,9 @@ const Header = styled.header`
   // position: sticky;
   top: 0;
   z-index: 90;
+  @media (max-width: 500px) {
+width: 100%; /* Full width on small screens */
+}
 `;
 
 function App() {
