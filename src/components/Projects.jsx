@@ -19,7 +19,7 @@ const projects = [
     tech: "HTML, CSS, JS, OpenWeather API",
     live: "https://alexanderweather.netlify.app",
     github: "https://github.com/Diekodavidd/Weathering.git",
-    desc: "Get live weather updates, forecasts, playlists, and a seasonal chat room. Built with JS and OpenWeather API.",
+    desc: "Get live weather updates, forecasts, playlists, & a seasonal chat room. Built with JS & OpenWeather API.",
     image: "https://api.url2png.com/v6/P4DF2F8BC83648/741d56d8056ffdd03ca0077fb642e938/png/?thumbnail_max_width=851&url=https://alexanderweather.netlify.app&viewport=1280x2000",
   },
   {
@@ -28,7 +28,7 @@ const projects = [
     tech: "HTML, CSS, JS, Firebase",
     live: "https://bankudooo.web.app",
     github: "https://github.com/Diekodavidd/Bankudo.git",
-    desc: "League management site for players and masters to track games, view tables, & log complaints. Firebase handles backend.",
+    desc: "League management site for players & masters to track games,view tables, & log complaints.Firebase handles backend.",
     image: "https://api.url2png.com/v6/P4DF2F8BC83648/6adb5a575179c00f3dceab295141938f/png/?thumbnail_max_width=851&url=https://bankudooo.web.app&viewport=1280x2000",
   },
   {
