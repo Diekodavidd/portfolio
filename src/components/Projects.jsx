@@ -90,7 +90,7 @@ const Card = styled(motion.div)`
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 330px;
+  height: 360px;
 
   &:hover {
     transform: translateY(-10px) scale(1.05);
