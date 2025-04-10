@@ -34,6 +34,13 @@ const Title = styled(motion.h1)`
   }
 
   transition: transform 0.3s ease, color 0.3s ease;
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
+    @media (max-width: 500px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const CodeAnimation = styled(motion.code)`

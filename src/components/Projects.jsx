@@ -165,6 +165,12 @@ const ProjectTitled = styled.h3`
   text-align: center;
   font-weight: bold;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+@media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+  @media (max-width: 500px) {
+    font-size: 1rem;
+  }
 `;
 
 const Type = styled.span`
