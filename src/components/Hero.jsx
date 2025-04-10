@@ -23,7 +23,7 @@ const HeroSection = styled.section`
 const Title = styled(motion.h1)`
   font-size: 3rem;
   font-weight: bold;
-  color: ${({ theme }) => theme.accent};
+  color: #D4AF37;
   margin-bottom: 1rem;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
   cursor: pointer;
